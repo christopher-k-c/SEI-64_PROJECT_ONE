@@ -23,6 +23,8 @@ let winningP = [
 
 ]
 
+// let currentPlayer = x;
+
 let humanArr = [];
 
 // Game Scores
@@ -64,8 +66,16 @@ createGrid();
 // let computerUser = 1;
 // let humanUser = 0;
 
-
+// Tracks round wins
 let playerScore = [];
+let computerScore = [];
+
+// Tracks turns
+let playerGo = 0;
+let computerGo = 0;
+
+// The computers move options, each time the user selects a box the computerOptions removes the number the user has selected
+let computerOptions = [0,1,2,3,4,5,6,7,8];
 
 // While player score is < 3 carry on 
 // If player score is equal to 3 they win the round 
@@ -74,22 +84,87 @@ $(".box").click(function(){
 
     // This gets the boxes index and pushes/adds it to an empty array
     let code = $(this).attr('id');
-
-    console.log(code)
-
+    
     // Push user input to an Array
     humanArr.push(code);
 
     // Sort that array in ascending order
     humanArr.sort(function(a, b){return a-b});
 
-
     // This colors the text of the selected box
-    $(this).css("color", "red");
+    $(this).css({color: 'red'});
 
+    $(this).text("X");
+
+
+    function removeText(){
+        $(".box").remove("X");
+        
+    }
+
+
+
+
+
+    //  let xElement = document.createElement("img");
+    //  xElement.setAttribute("src", "https://via.placeholder.com/150");
+    //  document.getElementById("code").appendChild(xElement);
+
+    // let userSelection = document.getElementById(code);
+    // console.log(userSelection)
+
+    console.log(`You have clicked on ${$(this).attr('id')}`)
+    console.log(computerOptions)
+
+    // This loop removes the Users choice from the computerOptions array 
+    // This loop checks the computerOptions variable and splices the the number of 
+    // the index of the box that the player most recently clicked on
+    
+    for (let index = 0; index < computerOptions.length; index++) {
+        
+        if(computerOptions[index] == code){
+            
+            computerOptions.splice(index, 1);
+            console.log(computerOptions)
+
+        }
+    }
+
+    computerGo = computerOptions[Math.floor(Math.random() * computerOptions.length)];
+
+    // This loop removes the Computers choice (computerGo) from the computerOptions array 
+    // This loop checks the computerOptions variable and splices the the number of the 
+    // index of the box that the computerGo variable selected
     
 
+    for (let index = 0; index < computerOptions.length; index++) {
+        
+        if(computerOptions[index] == computerGo){
+            
+            computerOptions.splice(index, 1);
+            console.log(computerOptions)
+
+        }
+    }
     
+
+
+    console.log("The Computer picks " + computerGo + "!")
+
+    let x = $(`#${computerGo}`).text("O");
+
+    console.log(x)
+
+    console.log("computerOptions", computerOptions)
+
+
+
+    // If neither of us score a winning position we need to default end game as a tie 
+
+    // A tie will take place when all 9 boxes have been filled 
+
+    // if ()
+   
 
     // Conditional For finding a winning match 
     if(humanArr.equals([0,1,2]) == true){
@@ -196,13 +271,6 @@ Object.defineProperty(Array.prototype, "equals", {enumerable: false});
 
 
 
-
-
-
-
-
-
-
 // Reset Game Function 
 
 function resetGame(){
@@ -218,11 +286,18 @@ function resetGame(){
             
 
         }
+        
 
     });
+
+    
 
 }
 
 
 
 
+
+
+
+// PLanning on using neon text 
