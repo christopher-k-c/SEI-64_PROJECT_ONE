@@ -1,6 +1,13 @@
+:root {
+    --colour-neon: rgb(0, 47, 255);
+    --colour-bg: hsl(323 21% 16%);
+}
+
 
 body {
-    background-color:pink;
+    /* background-color:pink; */
+    /* background-color: rgb(0, 18, 38); */
+    background-color: rgb(9, 4, 31);
 }
 
 .title {
@@ -9,14 +16,22 @@ body {
     align-items: center;
     padding: 0;
     margin: 0;
-    font-family: 'Rubik', sans-serif;
+    /* font-family: 'Rubik', sans-serif; */
+    /* font-family: 'Neonderthaw', cursive;*/
+    /* font-family: 'Yellowtail', cursive; */
+    font-family: "Vibur", sans-serif;
+    
+    color: var(--colour-neon);
     font-size: 40px;
 }
 
 .title > h1 {
     padding: 30px 0 30px 0;
     margin: 0;
+    
+    
 }
+
 
 main {
     height: 100%;
@@ -42,12 +57,25 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f5f5f5;
+    
     height: 200px;
     width: 200px;
     margin: 5px;
-    font-family: monospace;
+    /* font-family: monospace;*/
+    font-family: "Vibur", sans-serif;
     font-size: 150px;
+    border-radius: 3px;
+
+
+    /* need to turn of before styling "transparencey */
+    background-color:white;
+
+    /* Neon Styling */
+    /* text-shadow: 0 0 1em rgb(0, 0, 0), 0 0 .08em var(--colour-neon);
+    box-shadow: inset 0 0 .5em .08em var(--colour-neon), 
+    0 0 .1em .01em rgb(255, 144, 179);
+    color: rgb(255, 154, 137); */
+
     
 }
 
@@ -64,13 +92,21 @@ main {
     justify-content: space-evenly;
     align-items: center;
     padding:10px;
+
 }
 
 .roundContainer {
 
     display: flex;
-    font-family: 'Rubik', sans-serif;
+    /* font-family: 'Rubik', sans-serif; */
+    font-family: "Vibur", sans-serif;
     font-style: normal;
+    font-size: 30px;
+    color: white;
+}
+
+.roundContainer:hover {
+    color: pink;
 }
 
 .p1-score {
@@ -87,15 +123,98 @@ footer {
 }
 
 
+/* Neon Hover */
+
+
+/* Reset and Start Buttons */
+
 .resetGame {
 
-    background-color: black;
-    border: none;
+    position: relative;
+    /* 
+    background-color: black; */
+    border: var(--colour-neon) 3px solid;
+    border-radius: 2px;
     height: 50px;
     width: 100px;
-    color: white;
+    color: var(--colour-neon);
+    font-family: "Vibur", sans-serif;
+    font-size: 20px;
+    background-color: transparent;
+
+    
+    /* text-shadow: inset 0 0 10em 0 white, 0 0 1em 0 rgb(245, 0, 155); */
+    text-shadow: 0 0 .05em rgb(0, 0, 0), 0 0 .4em var(--colour-neon);
+
+    box-shadow: inset 0 0 .9em 0 var(--colour-neon), 0 0 .9em 0 var(--colour-neon);
+    transition: background-color 100ms linear;
+}
+
+.resetGame::before {
+
+    /* Pointer Events set to none stops the hover from taking effect when you 
+    scroll over the bottom section of the shadow */
+    pointer-events: none;
+    content:'';
+    position: absolute;
+    background: var(--colour-neon);
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: perspective(3em) rotateX(50deg)scale(1.6, .6);
+    filter: blur(.9em);
+}
+
+.resetGame::after {
+    
+    content:'';
+    position: absolute;  
+    top: 0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    box-shadow:  0 0 1.6em .2em var(--colour-neon);
+    opacity: 0;
+    transition: opacity 100ms linear;
+    
+    
+}
+
+.resetGame:hover, 
+.resetGame:focus {
+    background: var(--colour-neon);
+    color: black;
+    text-shadow: none;
+}
+
+.resetGame:hover::before {
+    opacity: 1;
+}
+
+.resetGame:hover::after {
+    opacity: 1;
+    
 
 }
+
+
+/* Title / Header */
+
+
+/* Score Trackers */
+
+
+/* Buttons */
+
+
+/* X & O's */
+
+
+
+
+
+
 
 
 
