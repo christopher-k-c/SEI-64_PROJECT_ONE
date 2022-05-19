@@ -1,6 +1,7 @@
 :root {
     --colour-neon: rgb(0, 47, 255);
     --colour-bg: hsl(323 21% 16%);
+    --colour-O: rgb(118, 139, 255);
 }
 
 
@@ -17,8 +18,8 @@ body {
     padding: 0;
     margin: 0;
     /* font-family: 'Rubik', sans-serif; */
-    /* font-family: 'Neonderthaw', cursive;*/
-    /* font-family: 'Yellowtail', cursive; */
+    
+    
     font-family: "Vibur", sans-serif;
     
     color: var(--colour-neon);
@@ -77,9 +78,6 @@ h1 > span:first-child {
 }
 
     
-
-
-
 main {
     height: 100%;
     display: flex;
@@ -114,20 +112,19 @@ main {
     border-radius: 3px;
 
 
+
     /* need to turn of before styling "transparencey */
     background-color: transparent;
     border: solid 5px var(--colour-neon);
     box-shadow:  0 0 .1em .01em var(--colour-neon);
-    color: rgb(169, 169, 169);
+    
 
     /* Neon Styling */
+    color: rgb(216, 255, 214);
+    text-shadow:0 0 0.1em var(--colour-O), 0 0 0.5em var(--colour-O), 0 0 0.1em var(--colour-O), 0 34px 11px #000;
 
-
-    /* text-shadow: 0 0 1em rgb(0, 0, 0), 0 0 .08em var(--colour-neon);
-    box-shadow: inset 0 0 .5em .08em var(--colour-neon), 
-    0 0 .1em .01em rgb(255, 144, 179);
-    color: rgb(255, 154, 137); */
-
+    
+    
     
 }
 
@@ -136,8 +133,10 @@ main {
     background-color: black;
 }
 
-
-
+.box:nth-child(odd) {
+    
+    border: none 10px black;
+}
 
 .scoring {
     display: flex;
@@ -150,7 +149,7 @@ main {
 .roundContainer {
 
     display: flex;
-    /* font-family: 'Rubik', sans-serif; */
+    
     font-family: "Vibur", sans-serif;
     font-style: normal;
     font-size: 30px;
@@ -158,9 +157,6 @@ main {
     text-shadow:0 0 0.01em #ff4444, 0 0 0.5em #ff4444, 0 0 0.1em #ff4444, 0 10px 3px #000;
 }
 
-/* .roundContainer:hover {
-    color: pink;
-} */
 
 .p1-score {
     padding-right: 100px;
@@ -252,19 +248,35 @@ footer {
 }
 
 
-/* Title / Header */
+.X {
+
+    
+    color: rgb(255, 214, 214);
+    text-shadow:0 0 0.1em #ff4444, 0 0 0.5em #ff4444, 0 0 0.1em #ff4444, 0 34px 11px #000;
+}
 
 
-/* Score Trackers */
 
-
-/* Buttons */
-
-
-/* X & O's */
 
 
 /* Sweet Alert */
+
+
+/* Blocks any cursor clicking  */
+
+.O:active {
+    pointer-events: none;
+
+}
+
+/* Allows cursor to hover but nothing else */
+
+.O:hover {
+
+    
+    
+    
+}
 
 
 

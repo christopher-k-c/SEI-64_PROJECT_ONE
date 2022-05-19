@@ -20,11 +20,6 @@ let playerScore = 0;
 let computerScore = 0;
 let draw = 0;
 
-// No match 
-
-let turn = 0;
-console.log(turn, " how much is turn?")
-
 
 // Tracks the computers choice
 let computerGo = 0;
@@ -42,7 +37,6 @@ let computerArr = [];
 // Defines array width and height  
 let width = 3;
 let cellCount = width * width;
-
 
 
 // Function that creates grid of divs
@@ -66,9 +60,9 @@ function createGrid(){
 createGrid();
 
 
-
-
 $(".box").click(function(){
+
+    
 
     // This gets the boxes index and pushes/adds it to an empty array
     let code = $(this).attr('id');
@@ -84,6 +78,7 @@ $(".box").click(function(){
 
     // Adds the X from the user input into the div currently selected 
     $(this).text("X");
+    $(this).addClass("X");
 
     // $(this).css('background-color', 'red');
 
@@ -104,8 +99,36 @@ $(".box").click(function(){
 
     // Check Computer game Score
     checkComputerGameScore();
+
+    // console.log(computerOptions, "hello")
+
+    checkDraw();
+
+    // stopUserFromSelectingO();
+
+    var elts = document.getElementsByClassName('box');
+
+
+    for (var i = 0; i < elts.length; i++) {
+
+        let check = elts[i].innerHTML;
+        
+
+        if(check === "O"){
+
+            console.log(check)
+
+            elts[i].classList.add("O");
+        
+        }
+    }
+
+    
+
+    
   
 });
+
 
 function removeUserChoice(id){
 
@@ -124,6 +147,7 @@ function removeUserChoice(id){
 
 }
 
+
 function addComputerChoice(){
 
 
@@ -137,9 +161,9 @@ function addComputerChoice(){
     // Sorts that array in ascending order 
     computerArr.sort(function(a, b){return a-b});
 
-    
-    
+    // Add Class O to all computer choices   
 }
+
 
 function removeComputerChoice(){
 
@@ -160,11 +184,11 @@ function removeComputerChoice(){
     $(`#${computerGo}`).text("O");
 }
 
+
 function checkGameScore(){
 
 
-    turn++
-    console.log(turn, " user turn")
+  
     // User Score
 
     var containsAll = false;
@@ -193,6 +217,10 @@ function checkGameScore(){
 
             
         } else {
+
+            
+
+            // $(this).addClass("X");
             // console.log("Winning combo not matched")
         }
     });
@@ -201,11 +229,9 @@ function checkGameScore(){
 }
 
 
-
 function checkComputerGameScore(){
 
-    turn++
-    console.log(turn, " computer turn")
+    
 
     var compContainsAll = false;
     var compTerminated = false;
@@ -241,14 +267,14 @@ function checkComputerGameScore(){
 }
 
 
-
-
-
-
 function checkScore(){
 
+
+
     if(playerScore >= 3){
+
         playerScore = 0;
+        
         console.log("Player Wins the game")
 
         // Sweet Alert telling user they have one
@@ -256,12 +282,17 @@ function checkScore(){
         // Reset Game Scores
         document.getElementById("P1").innerHTML = "";
         document.getElementById("P2").innerHTML = "";
+
     } else if (computerScore >= 3) {
+
         computerScore = 0;
 
         // Sweet Alert telling user they have one
         swal("Computer Wins the game!");
+        
     } else {
+        
+        $("div").removeClass("O");
         document.getElementById("P1").innerHTML = `${computerScore}`;
         document.getElementById("P2").innerHTML = `${playerScore}`;
         console.log("Play on!")
@@ -270,15 +301,63 @@ function checkScore(){
 }
 
 
+function checkDraw(){
 
+    if (computerOptions.length <= 0) {
+        console.log("It's a draw!")
+        swal("It is a draw!");
+        draw++
+        document.getElementById("draw").innerHTML = `${draw}`;
+        updateGame();
+    }
+
+}
 
 
 // Reset Game Function 
-
 function resetGame(){
 
-    turn = 0;
+
+    draw = 0;
     
+    // Resets the players name
+    document.getElementById("USER1").innerHTML = `Player One:`;
+
+    updateGame();
+
+    
+}
+
+
+function updateGame(){
+
+    $("div").removeClass("X");
+    $("div").removeClass("O");
+
+    // Removes all elements content - Sorry i know it;s terrible want to refactor
+
+    document.getElementById("0").innerHTML = "";
+    document.getElementById("1").innerHTML = "";
+    document.getElementById("2").innerHTML = "";
+    document.getElementById("3").innerHTML = "";
+    document.getElementById("4").innerHTML = "";
+    document.getElementById("5").innerHTML = "";
+    document.getElementById("6").innerHTML = "";
+    document.getElementById("7").innerHTML = "";
+    document.getElementById("8").innerHTML = "";
+
+    // Clear all boxe styling  
+    const clearBoxes = document.querySelectorAll('.box');
+
+    clearBoxes.forEach(box => {
+      box.style.backgroundColor = 'transparent';
+      
+      
+    });
+
+    // Resets computerOption array to the full list of indexes 
+    computerOptions = [0,1,2,3,4,5,6,7,8];
+
     // https://bit.ly/3NixlSR
 
     humanArr.forEach(element => {
@@ -303,54 +382,7 @@ function resetGame(){
         
     });
 
-
-    // Removes all elements content - Sorry i know it;s terrible want to refactor
-
-    document.getElementById("0").innerHTML = "";
-    document.getElementById("1").innerHTML = "";
-    document.getElementById("2").innerHTML = "";
-    document.getElementById("3").innerHTML = "";
-    document.getElementById("4").innerHTML = "";
-    document.getElementById("5").innerHTML = "";
-    document.getElementById("6").innerHTML = "";
-    document.getElementById("7").innerHTML = "";
-    document.getElementById("8").innerHTML = "";
-    
-
-
-    // Resets computerOption array to the full list of indexes 
-    computerOptions = [0,1,2,3,4,5,6,7,8];
-
-    noMatch = 0;
-
-
-
-
-    // Resets the players name
-    document.getElementById("USER1").innerHTML = `Player One:`;
-
-
-  
-    // Clear all boxe styling  
-    const clearBoxes = document.querySelectorAll('.box');
-
-    clearBoxes.forEach(box => {
-      box.style.backgroundColor = 'transparent';
-      
-      
-    });
-
-
-    
-
-    
-
-
-
-    
-
 }
-
 
 
 function setName() {
