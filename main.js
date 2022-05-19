@@ -23,6 +23,7 @@ let draw = 0;
 // No match 
 
 let turn = 0;
+console.log(turn, " how much is turn?")
 
 
 // Tracks the computers choice
@@ -130,13 +131,13 @@ function addComputerChoice(){
     // Decides which number the computer can pick 
     computerGo = computerOptions[Math.floor(Math.random() * computerOptions.length)];
 
-    // Adds that choice to the computerArr array
+    // Adds that choice to the computerArr array, the double quotations separate each int pushed to the array
     computerArr.push("" + computerGo);
 
     // Sorts that array in ascending order 
     computerArr.sort(function(a, b){return a-b});
 
-    // turn++
+    
     
 }
 
@@ -162,7 +163,8 @@ function removeComputerChoice(){
 function checkGameScore(){
 
 
-
+    turn++
+    console.log(turn, " user turn")
     // User Score
 
     var containsAll = false;
@@ -182,6 +184,7 @@ function checkGameScore(){
         if(containsAll == true){
             terminated = true;
             console.log(`The user has won!`)
+
             swal("Player won this round")
 
             playerScore++
@@ -193,12 +196,16 @@ function checkGameScore(){
             // console.log("Winning combo not matched")
         }
     });
-    console.log(terminated, "h")
+    console.log(terminated)
 
 }
 
 
+
 function checkComputerGameScore(){
+
+    turn++
+    console.log(turn, " computer turn")
 
     var compContainsAll = false;
     var compTerminated = false;
@@ -233,46 +240,8 @@ function checkComputerGameScore(){
 
 }
 
-    // else if number of turns is equal to 8 log a draw.....
-    // else if( turn >= 8 ) { draw++ console.log(" It's a draw")}
-    // document.getElementById("draw").innerHTML = `${draw}`
 
 
-
-
-
-// // Compares Arrays
-
-// // Warn if overriding existing method
-// if(Array.prototype.equals)
-//     console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");
-// // attach the .equals method to Array's prototype to call it on any array
-// Array.prototype.equals = function (array) {
-//     // if the other array is a falsy value, return
-//     if (!array)
-//         return false;
-
-//     // compare lengths - can save a lot of time 
-//     if (this.length != array.length)
-//         return false;
-
-//     for (var i = 0, l=this.length; i < l; i++) {
-//         // Check if we have nested arrays
-//         if (this[i] instanceof Array && array[i] instanceof Array) {
-//             // recurse into the nested arrays
-//             if (!this[i].equals(array[i]))
-//                 return false;       
-//         }           
-//         else if (this[i] != array[i]) { 
-//             // Warning - two different object instances will never be equal: {x:20} != {x:20}
-//             return false;   
-//         }           
-//     }       
-//     return true;
-
-// }
-// // Hide method from for-in loops
-// Object.defineProperty(Array.prototype, "equals", {enumerable: false});
 
 
 
@@ -307,6 +276,8 @@ function checkScore(){
 // Reset Game Function 
 
 function resetGame(){
+
+    turn = 0;
     
     // https://bit.ly/3NixlSR
 
@@ -369,6 +340,9 @@ function resetGame(){
       
     });
 
+
+    
+
     
 
 
@@ -400,18 +374,6 @@ function setName() {
 
 }
 
-
-
-
-
-// const arr1 = ['pizza', 'cola', 'pepsi'];
-// const arr2 = ['pizza', 'cake', 'cola'];
-
-// const containsAll = arr1.every(element => {
-//   return arr2.includes(element);
-// });
-
-// console.log(containsAll);
 
 
 
