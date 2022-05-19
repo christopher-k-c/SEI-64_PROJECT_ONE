@@ -408,7 +408,17 @@ function setName() {
 
 
 
+function clearAll(){
 
+    document.getElementById("P1").innerHTML = "";
+    document.getElementById("P2").innerHTML = "";
+
+    playerScore = 0;
+    computerScore = 0;
+    
+    resetGame();
+
+}
 
 
 
