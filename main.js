@@ -33,7 +33,7 @@ let computerGo = 0;
 let computerOptions = [0,1,2,3,4,5,6,7,8];
 
 
-// Stores the human and computers whilst the game is underway  
+// Stores the human and computers go whilst the game is underway  
 let humanArr = [];
 let computerArr = [];
 
@@ -57,7 +57,7 @@ function createGrid(){
     
         cont.appendChild(div)
         
-        div.innerText = index;
+        // div.innerText = index;
 
     }
 
@@ -79,10 +79,12 @@ $(".box").click(function(){
     humanArr.sort(function(a, b){return a-b});
 
     // This colors the text of the selected box
-    $(this).css({color: 'red'});
+    // $(this).css({color: 'black'});
 
     // Adds the X from the user input into the div currently selected 
     $(this).text("X");
+
+    // $(this).css('background-color', 'red');
 
     // Logs the button you have selected 
     console.log(`You have clicked on ${$(this).attr('id')}`)
@@ -98,6 +100,9 @@ $(".box").click(function(){
         
     // Checks if theres a winning set of inputs
     checkGameScore();
+
+    // Check Computer game Score
+    checkComputerGameScore();
   
 });
 
@@ -126,15 +131,13 @@ function addComputerChoice(){
     computerGo = computerOptions[Math.floor(Math.random() * computerOptions.length)];
 
     // Adds that choice to the computerArr array
-    computerArr.push(computerGo);
+    computerArr.push("" + computerGo);
 
     // Sorts that array in ascending order 
     computerArr.sort(function(a, b){return a-b});
 
-    turn++
+    // turn++
     
-    
-
 }
 
 function removeComputerChoice(){
@@ -158,170 +161,77 @@ function removeComputerChoice(){
 
 function checkGameScore(){
 
-    // var containsAll = false;
-    // var terminated = false;
 
-    // winningP.forEach(winC => {
-    //     // console.log(winC)
-    //     // console.log(humanArr)
-    //         containsAll = winC.every(element => {
-    //         var result = humanArr.includes(element);
-    //         return result;
+
+    // User Score
+
+    var containsAll = false;
+    var terminated = false;
+
+    winningP.forEach(winC => {
         
-    //     }); 
+            containsAll = winC.every(element => {
+            var humanResult = humanArr.includes(element);
+            
+            return humanResult;
+            
+        }); 
 
-    //     console.log(containsAll)
+        console.log(containsAll)
 
-    //     if(containsAll == true){
-    //         terminated = true;
-    //         // console.log("Winning Combination Matched")
-    //     } else {
-    //         // console.log("Winning combo not matched")
-    //     }
-    // });
-    // console.log(terminated)
+        if(containsAll == true){
+            terminated = true;
+            console.log(`The user has won!`)
+            swal("Player won this round")
 
+            playerScore++
+            checkScore();
+            resetGame();
+
+            
+        } else {
+            // console.log("Winning combo not matched")
+        }
+    });
+    console.log(terminated, "h")
+
+}
+
+
+function checkComputerGameScore(){
+
+    var compContainsAll = false;
+    var compTerminated = false;
     
 
-    if((humanArr.equals([0,1,2]) == true) || (computerArr.equals([0,1,2]) == true)){
+    winningP.forEach(winC => {
+    console.log(computerArr)
+    console.log(winningP) 
+        compContainsAll = winC.every(element => {
+        var computerResult = computerArr.includes(element);
 
+        return computerResult;
+        
+    }); 
 
-        if(computerArr.equals([0,1,2]) == true) {
+    console.log(compContainsAll)
 
-            computerScore++
-            console.log(`The computer wins!`)
+    if(compContainsAll == true){
+        compTerminated = true;
+        
+        swal("Computer won this round")
 
-        } else {
-
-            playerScore++
-            console.log(`The human wins!`)
-
-        }
+        computerScore++
         checkScore();
         resetGame();
         
-    }
-     else if((humanArr.equals([3,4,5]) == true) || (computerArr.equals([3,4,5]) == true)){
-
-
-
-        if(computerArr.equals([3,4,5]) == true) {
-
-            computerScore++
-            console.log(`The computer wins!`)
-
-        } else {
-
-            playerScore++
-            console.log(`The human wins!`)
-
-        }
-        checkScore();
-        resetGame();
-
-    } else if((humanArr.equals([6,7,8]) == true) || (computerArr.equals([6,7,8]) == true)){
-
-        if(computerArr.equals([6,7,8]) == true) {
-
-            computerScore++
-            console.log(`The computer wins!`)
-
-        } else {
-
-            playerScore++
-            console.log(`The human wins!`)
-
-        }
-        checkScore();
-        resetGame();
-
-    } else if((humanArr.equals([0,3,6]) == true) || (computerArr.equals([0,3,6]) == true)){
-
-        if(computerArr.equals([0,3,6]) == true) {
-
-            computerScore++
-            console.log(`The computer wins!`)
-
-        } else {
-
-            playerScore++
-            console.log(`The human wins!`)
-
-        }
-        checkScore();
-        resetGame();
-
-    } else if((humanArr.equals([1,4,7]) == true) || (computerArr.equals([1,4,7]) == true)){
-       
-        if(computerArr.equals([1,4,7]) == true) {
-
-            computerScore++
-            console.log(`The computer wins!`)
-
-        } else {
-
-            playerScore++
-            console.log(`The human wins!`)
-
-        }
-        checkScore();
-        resetGame();
-
-    } else if((humanArr.equals([2,5,8]) == true) || (computerArr.equals([2,5,8]) == true)){
-
-        if(computerArr.equals([2,5,8]) == true) {
-
-            computerScore++
-            console.log(`The computer wins!`)
-
-        } else {
-
-            playerScore++
-            console.log(`The human wins!`)
-
-        }
-        checkScore();
-        resetGame();
-
-    } else if((humanArr.equals([0,4,8]) == true) || (computerArr.equals([0,4,8]) == true)){
-
-        if(computerArr.equals([0,4,8]) == true) {
-
-            computerScore++
-            console.log(`The computer wins!`)
-
-        } else {
-
-            playerScore++
-            console.log(`The human wins!`)
-
-        }
-        checkScore();
-        resetGame();
-
-    } else if((humanArr.equals([2,4,6]) == true) || (computerArr.equals([2,4,6]) == true)){
-        
-        if(computerArr.equals([2,4,6]) == true) {
-
-            computerScore++
-            console.log(`The computer wins!`)
-
-        } else {
-
-            playerScore++
-            console.log(`The human wins!`)
-
-        }
-        checkScore();
-        resetGame();
-
     } else {
-        //My clicks are applying one to noMatch, it also needs to be used by the computer
-        turn++
-        console.log(turn)
+        // console.log("Winning combo not matched")
     }
+    });
+    console.log(compTerminated)
 
-    }
+}
 
     // else if number of turns is equal to 8 log a draw.....
     // else if( turn >= 8 ) { draw++ console.log(" It's a draw")}
@@ -331,38 +241,38 @@ function checkGameScore(){
 
 
 
-// Compares Arrays
+// // Compares Arrays
 
-// Warn if overriding existing method
-if(Array.prototype.equals)
-    console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");
-// attach the .equals method to Array's prototype to call it on any array
-Array.prototype.equals = function (array) {
-    // if the other array is a falsy value, return
-    if (!array)
-        return false;
+// // Warn if overriding existing method
+// if(Array.prototype.equals)
+//     console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");
+// // attach the .equals method to Array's prototype to call it on any array
+// Array.prototype.equals = function (array) {
+//     // if the other array is a falsy value, return
+//     if (!array)
+//         return false;
 
-    // compare lengths - can save a lot of time 
-    if (this.length != array.length)
-        return false;
+//     // compare lengths - can save a lot of time 
+//     if (this.length != array.length)
+//         return false;
 
-    for (var i = 0, l=this.length; i < l; i++) {
-        // Check if we have nested arrays
-        if (this[i] instanceof Array && array[i] instanceof Array) {
-            // recurse into the nested arrays
-            if (!this[i].equals(array[i]))
-                return false;       
-        }           
-        else if (this[i] != array[i]) { 
-            // Warning - two different object instances will never be equal: {x:20} != {x:20}
-            return false;   
-        }           
-    }       
-    return true;
+//     for (var i = 0, l=this.length; i < l; i++) {
+//         // Check if we have nested arrays
+//         if (this[i] instanceof Array && array[i] instanceof Array) {
+//             // recurse into the nested arrays
+//             if (!this[i].equals(array[i]))
+//                 return false;       
+//         }           
+//         else if (this[i] != array[i]) { 
+//             // Warning - two different object instances will never be equal: {x:20} != {x:20}
+//             return false;   
+//         }           
+//     }       
+//     return true;
 
-}
-// Hide method from for-in loops
-Object.defineProperty(Array.prototype, "equals", {enumerable: false});
+// }
+// // Hide method from for-in loops
+// Object.defineProperty(Array.prototype, "equals", {enumerable: false});
 
 
 
@@ -371,9 +281,17 @@ function checkScore(){
     if(playerScore >= 3){
         playerScore = 0;
         console.log("Player Wins the game")
+
+        // Sweet Alert telling user they have one
+        swal("Player Wins the game!");
+        // Reset Game Scores
+        document.getElementById("P1").innerHTML = "";
+        document.getElementById("P2").innerHTML = "";
     } else if (computerScore >= 3) {
         computerScore = 0;
-        console.log("Computer Wins the game")
+
+        // Sweet Alert telling user they have one
+        swal("Computer Wins the game!");
     } else {
         document.getElementById("P1").innerHTML = `${computerScore}`;
         document.getElementById("P2").innerHTML = `${playerScore}`;
@@ -384,11 +302,12 @@ function checkScore(){
 
 
 
+
+
 // Reset Game Function 
 
 function resetGame(){
     
-
     // https://bit.ly/3NixlSR
 
     humanArr.forEach(element => {
@@ -398,10 +317,8 @@ function resetGame(){
             humanArr.pop(element)
             console.log(humanArr)
             
-
         }
         
-
     });
 
     computerArr.forEach(element => {
@@ -411,10 +328,8 @@ function resetGame(){
             computerArr.pop(element)
             console.log(computerArr)
             
-
         }
         
-
     });
 
 
@@ -429,6 +344,7 @@ function resetGame(){
     document.getElementById("6").innerHTML = "";
     document.getElementById("7").innerHTML = "";
     document.getElementById("8").innerHTML = "";
+    
 
 
     // Resets computerOption array to the full list of indexes 
@@ -436,14 +352,57 @@ function resetGame(){
 
     noMatch = 0;
 
-    
 
+
+
+    // Resets the players name
+    document.getElementById("USER1").innerHTML = `Player One:`;
+
+
+  
+    // Clear all boxe styling  
+    const clearBoxes = document.querySelectorAll('.box');
+
+    clearBoxes.forEach(box => {
+      box.style.backgroundColor = 'transparent';
+      
+      
+    });
+
+    
 
 
 
     
 
 }
+
+
+
+function setName() {
+
+
+    swal({
+        content: "input",
+    })
+    .then(value => {
+        document.getElementById("USER1").innerHTML = `${value}:`;
+        let userName = value
+        console.log(userName);
+    
+        
+    });
+
+
+    
+
+
+
+}
+
+
+
+
 
 // const arr1 = ['pizza', 'cola', 'pepsi'];
 // const arr2 = ['pizza', 'cake', 'cola'];

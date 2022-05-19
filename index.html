@@ -30,7 +30,7 @@
 
         <div class="title">
 
-            <h1>tic tac toe</h1>
+            <h1>T<span>i</span>c Tac <span>T</span>oe</h1>
 
         </div>
 
@@ -68,7 +68,7 @@
 
             <div class="p2-score">
 
-                Player Two Score:<span id="P2"></span>
+                <span id="USER1">Player Two Score:</span><span id="P2"></span>
 
             </div>
             
@@ -79,15 +79,20 @@
     <footer>
 
         <button class="resetGame" onclick="resetGame()">Reset Game</button>
-        <button class="resetGame" onclick="startGame()">Add Name</button>
+        
+        <button class="resetGame" onclick="setName()">Add Name</button>
 
     </footer>
 
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script
-    src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-    crossorigin="anonymous"></script>
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+    </script>
     <script src="main.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
 </body>
 </html>
