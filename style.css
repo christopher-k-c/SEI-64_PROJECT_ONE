@@ -177,6 +177,8 @@ footer {
     transition: background-color 100ms linear;
 }
 
+
+/* Adds additional shadow/increases shadow*/
 .resetGame::before {
 
     /* Pointer Events set to none stops the hover from taking effect when you 
@@ -194,7 +196,9 @@ footer {
 }
 
 .resetGame::after {
-    
+
+
+    /* Creates the light below the reset game and add name buttons */
     content:'';
     position: absolute;  
     top: 0;
@@ -205,11 +209,12 @@ footer {
     opacity: 0;
     transition: opacity 100ms linear;
     
-    
 }
 
 .resetGame:hover, 
 .resetGame:focus {
+
+    /* Applies colour in and around the box on hover */
     background: var(--colour-neon);
     color: black;
     text-shadow: none;
@@ -240,12 +245,8 @@ footer {
 
 }
 
-/* Allows cursor to hover but nothing else */
 
-.O:hover {
-    
-      
-}
+/* Pop up styling */
 
 .swal-text {
     color: white;

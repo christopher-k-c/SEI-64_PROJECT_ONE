@@ -83,7 +83,7 @@ $(".box").click(function(){
     // $(this).css('background-color', 'red');
 
     // Logs the button you have selected 
-    console.log(`You have clicked on ${$(this).attr('id')}`)
+    // console.log(`You have clicked on ${$(this).attr('id')}`)
 
     // Removes the users choice from the computers options 
     removeUserChoice(code);
@@ -161,7 +161,7 @@ function addComputerChoice(){
     // Sorts that array in ascending order 
     computerArr.sort(function(a, b){return a-b});
 
-    // Add Class O to all computer choices   
+      
 }
 
 
@@ -197,6 +197,7 @@ function checkGameScore(){
     winningP.forEach(winC => {
         
             containsAll = winC.every(element => {
+                // console.log(element)
             var humanResult = humanArr.includes(element);
             
             return humanResult;
@@ -238,16 +239,18 @@ function checkComputerGameScore(){
     
 
     winningP.forEach(winC => {
-    console.log(computerArr)
-    console.log(winningP) 
+    
+
         compContainsAll = winC.every(element => {
+
+            
         var computerResult = computerArr.includes(element);
 
         return computerResult;
         
     }); 
 
-    console.log(compContainsAll)
+   
 
     if(compContainsAll == true){
         compTerminated = true;
@@ -258,9 +261,8 @@ function checkComputerGameScore(){
         checkScore();
         resetGame();
         
-    } else {
-        // console.log("Winning combo not matched")
-    }
+    } 
+    
     });
     console.log(compTerminated)
 
@@ -268,7 +270,6 @@ function checkComputerGameScore(){
 
 
 function checkScore(){
-
 
 
     if(playerScore >= 3){
@@ -279,6 +280,7 @@ function checkScore(){
 
         // Sweet Alert telling user they have one
         swal("Player Wins the game!");
+        
         // Reset Game Scores
         document.getElementById("P1").innerHTML = "";
         document.getElementById("P2").innerHTML = "";
@@ -289,6 +291,10 @@ function checkScore(){
 
         // Sweet Alert telling user they have one
         swal("Computer Wins the game!");
+
+        // Reset Game Scores
+        document.getElementById("P1").innerHTML = "";
+        document.getElementById("P2").innerHTML = "";
         
     } else {
         
@@ -334,7 +340,7 @@ function updateGame(){
     $("div").removeClass("X");
     $("div").removeClass("O");
 
-    // Removes all elements content - Sorry i know it;s terrible want to refactor
+    // Removes all elements content - 
 
     document.getElementById("0").innerHTML = "";
     document.getElementById("1").innerHTML = "";
