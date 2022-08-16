@@ -63,7 +63,7 @@ can choose from and the other is called the computer array which stores the comp
 inputs. Each time the human makes a choice their selected number is removed from the 
 computer options array. 
 
-![Checking For User Winning Position](/thephonograph/main_app/static/images/game_logic.png)
+![Checking For User Winning Position](/game_logic.png)
 
 Each input from both computer and user is checked against the winning positions array,
 if the user for instance has a match, we add 1 to the playerScore variable, a dialog 
