@@ -1,5 +1,9 @@
 # Tic Tac Toe
 
+<a href="https://christopher-k-c.github.io/SEI-64_PROJECT_ONE/">Deployed Site</a>
+
+![Completed](/final.png)
+
 This project was my first deep dive into javascript, it took four days and was a solo endeavour. JQuery and Javascript were used to build the game logic, Sweet Alert which is a javascript messaging library was used to notify Users of the games outcomes and HTML and CSS to shape and style the project. Here is a brief overview of the game's constraints, the User can only play the computer, a game is won when a player applies one of the eight winning positions to the grid, a round is won when either the User or Computer wins three games, the game score is then reset when a User or the Computer wins.
 
 ## List Of Technologies Used:
@@ -13,7 +17,9 @@ This project was my first deep dive into javascript, it took four days and was a
 
 ## Wireframes and Userstories 
 
-https://www.figma.com/file/pk7l77rXgNJoFsfVeHWQnc/Untitled?node-id=0%3A1
+![Figma](/figma.png)
+
+<a href="https://www.figma.com/file/pk7l77rXgNJoFsfVeHWQnc/Untitled?node-id=0%3A1"> Figma </a>
 
 
 * As a player, I want my input i.e. clicking on a box, to affect the grid system by populating it with a X symbol.
@@ -61,8 +67,11 @@ here are eight winning positions on the board. Each time a user takes a go the i
 Each input from both computer and user is checked against the winning positions array, if the user for instance has a match, we add 1 to the playerScore variable, a dialog box pops up informing the user of their win and two functions are run, checkScore() and resetGame().
 
 The checkScore() function looks to see if the player or computers score is equal to three - if so they win the game - if not they play on. The resetGame function will refresh the boxes, removing all X and O’s. It will also replenish the computer options array with a full list of options and remove everything from the Human Array and Computer Array which contains their previous game input.
-
 Once the user or computer has won three times the game is over. The last function we call clears everything including the player, computer and draw score.
+
+## Sweet Alert Promise Example
+![Sweet Alert Promises](/sweetalert.png)
+
 
 ## CSS Keyframes Animation Example
 ![CSS Keyframes Animation Example](/keyframe.png)
@@ -86,6 +95,7 @@ My favourite function is probably the click function because it ignites the game
 
 - Discovered the every() method which is an integral part of the game's logic and a key discovery that ensured the project's success.
 - Discovered the includes() method which again played a key role in comparing grid combinations against winning positions.
+- Learnt Javascript promises via Sweet Alert library.
 - Managed to check for winning combinations and updated the game score based on the outcomes of the functions that checked for draws or matches.
 - The User is able to change their playing name from Guest to their name or anything that they like.
 
