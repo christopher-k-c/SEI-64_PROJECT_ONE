@@ -70,7 +70,14 @@ The checkScore() function looks to see if the player or computers score is equal
 Once the user or computer has won three times the game is over. The last function we call clears everything including the player, computer and draw score.
 
 ## Sweet Alert Promise Example
+
+![Sweet Alert Promises](/sweetalert-two.png)
+
+This promise allowed me to set the users name by pulling up a user input field styled by the sweet alert library, which targets a html element with the id of USER1 and when the User inputs their name the HTML element has its inner html set to the value of the user input.
+
 ![Sweet Alert Promises](/sweetalert.png)
+
+Here is a example of the sweet alert in action, it's not only used for setting a users name but also for alerting the Player to the outcome of a game or round.
 
 
 ## CSS Keyframes Animation Example
