@@ -65,10 +65,16 @@ The checkScore() function looks to see if the player or computers score is equal
 Once the user or computer has won three times the game is over. The last function we call clears everything including the player, computer and draw score.
 
 ## CSS Keyframes Animation Example
+![CSS Keyframes Animation Example](/keyframe.png)
 I implemented a CSS keyframe animation into my project, this was my first time using animations. I wanted to add a little visual depth to the game and I thought the neon styling (Which i had seen done in various tutorials) would suit the project. I followed a tutorial and then experimented with its implementation.
 
+
+
 ## CSS Variables Example
+![CSS Variables Example](/css-vars.png)
 I wanted to write clear and easily amendable code which is why I decided to implement CSS variables into the project.
+
+
 
 ## Favourite Functions
 
