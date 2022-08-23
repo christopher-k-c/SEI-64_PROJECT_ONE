@@ -60,13 +60,14 @@ Furthermore, there are only eight winning positions a player can select, so I ne
 
 ## Solving For The Winner
 
-here are eight winning positions on the board. Each time a user takes a go the index of the selected box is stored in an array. The computer has two arrays, one of which is called the Computer options array, this contains all of the positions the computer can choose from and the other is called the computer array which stores the computer's inputs. Each time the human makes a choice their selected number is removed from the computer options array.
+There are eight winning positions on the board. Each time a user takes a go the index of the selected box is stored in an array. The computer has two arrays, one of which is called the Computer options array, this contains all of the positions the computer can choose from and the other is called the computer array which stores the computer's inputs. Each time the human makes a choice their selected number is removed from the computer options array.
 
 ![Checking For User Winning Position](/game_logic.png)
 
 Each input from both computer and user is checked against the winning positions array, if the user for instance has a match, we add 1 to the playerScore variable, a dialog box pops up informing the user of their win and two functions are run, checkScore() and resetGame().
 
-The checkScore() function looks to see if the player or computers score is equal to three - if so they win the game - if not they play on. The resetGame function will refresh the boxes, removing all X and O’s. It will also replenish the computer options array with a full list of options and remove everything from the Human Array and Computer Array which contains their previous game input.
+The checkScore() function looks to see if the player or computer's score is equal to three - if so they win the game - if not they play on. The resetGame function will refresh the boxes, removing all X and O’s. It will also replenish the computer options array with a full list of options and remove everything from the Human Array and Computer Array which contains their previous game input.
+
 Once the user or computer has won three times the game is over. The last function we call clears everything including the player, computer and draw score.
 
 ## Sweet Alert Promise Example
@@ -77,7 +78,7 @@ This promise allowed me to set the users name by pulling up a user input field s
 
 ![Sweet Alert Promises](/sweetalert.png)
 
-Here is a example of the sweet alert in action, it's not only used for setting a users name but also for alerting the Player to the outcome of a game or round.
+Here is an example of the sweet alert in action, it's not only used for setting a users name but also for alerting the Player to the outcome of a game or round.
 
 
 ## CSS Keyframes Animation Example
